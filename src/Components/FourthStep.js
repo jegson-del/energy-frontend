@@ -5,6 +5,9 @@ import { multiStepContext } from "../StepContext";
 export default function FourthStep() {
   const { setStep, userData, setUserData, submitData } =
     useContext(multiStepContext);
+    const onSumbitRequest = async () => {
+        console.log(userData);
+    }
   return (
     <div>
       <h3 style={{ color: "red" }}> Whats your energy usage</h3>
@@ -13,7 +16,7 @@ export default function FourthStep() {
         color="default"
         marging="normal"
         style={{ width: 200, height: 70 }}
-        onClick ={(e)=>setUserData({...userData, "energy_usage" : "Always On"})}
+        onClick={(e) => setUserData({ ...userData, energy_usage: "Always On" })}
       >
         Always On
       </Button>
@@ -21,7 +24,7 @@ export default function FourthStep() {
         variant="contained"
         color="primary"
         style={{ width: 200, height: 70, marginLeft: 20 }}
-        onClick ={(e)=>setUserData({...userData, "energy_usage" : "Economy"})}
+        onClick={(e) => setUserData({ ...userData, energy_usage: "Economy" })}
       >
         Economy
       </Button>
@@ -29,7 +32,9 @@ export default function FourthStep() {
         variant="contained"
         color="inherit"
         style={{ width: 200, height: 70, marginLeft: 20 }}
-        onClick ={(e)=>setUserData({...userData, "energy_usage" : "Suplementary"})}
+        onClick={(e) =>
+          setUserData({ ...userData, energy_usage: "Suplementary" })
+        }
       >
         Suplementary
       </Button>
@@ -42,14 +47,14 @@ export default function FourthStep() {
         >
           Back
         </Button>
-        <Button 
-          onClick={submitData}
+        <Button
+          onClick={() => {submitData(); onSumbitRequest()}}
           variant="contained"
           color="primary"
           style={{ marginTop: 20 }}
+          
         >
-    
-          Submit
+        Submit
         </Button>
       </div>
     </div>
